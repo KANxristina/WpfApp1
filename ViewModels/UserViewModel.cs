@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using WpfApp1.Models;
 
 namespace WpfApp1.ViewModels
@@ -13,8 +15,19 @@ namespace WpfApp1.ViewModels
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         private ObservableCollection<UserModel> userList;
+        public UserViewModel()
+        {
+            InitializeList();
+            userList = UserList;
+            //userList=new ObservableCollection<UserModel>();
+            userList.CollectionChanged += UserList_CollectionChanged;
+        }
+        private void UserList_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged("UserList");
+        }
         public ObservableCollection<UserModel> UserList {
-            get { return userList; }
+            get  {return userList; }
             set
             {
                 userList = value;
@@ -23,20 +36,24 @@ namespace WpfApp1.ViewModels
         }
 
 
-
-        public void FindUsers()
+        public void InitializeList()
         {
-        ObservableCollection<UserModel> list = new ObservableCollection<UserModel>
+            ObservableCollection<UserModel> list = new ObservableCollection<UserModel>
             {
                 new UserModel{ FirstName="Elena", LastName="Kanaki" }
             };
-            UserList=list;
+            UserList = list;
+        }
+        public ObservableCollection<UserModel> FindUsers()
+        {
+            InitializeList();
+            return UserList;
 
         }
         
-       public void AddUser(string firstName, string lastName)
+       public ObservableCollection<UserModel> AddUser(string firstName, string lastName)
         {
-            FindUsers();
+            //FindUsers();
             List<UserModel> list = new List<UserModel>
             {
                 new UserModel{ FirstName=firstName, LastName=lastName }
@@ -46,9 +63,10 @@ namespace WpfApp1.ViewModels
 
                 UserList.Add(user);
             }
+            return UserList;
             
         }
-        public void RemoveUser(string firstName, string lastName)
+        public ObservableCollection<UserModel> RemoveUser(string firstName, string lastName)
         {
             FindUsers();
             List<UserModel> list = new List<UserModel>
@@ -60,7 +78,7 @@ namespace WpfApp1.ViewModels
                 if(UserList.Contains(user))
                 UserList.Remove(user);
             }
-
+            return UserList;
         }
         protected void OnPropertyChanged(string propertyName)
         {

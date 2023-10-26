@@ -33,7 +33,7 @@ namespace WpfApp1
                    // FirstViewControl.DataContext = firstViewModel.FirstModel;
 
              UserViewModel userViewModel = new UserViewModel();
-            userViewModel.FindUsers();
+            userViewModel.InitializeList();
             FirstViewControl.DataContext = userViewModel;
         }
     }

@@ -29,14 +29,19 @@ namespace WpfApp1.Views
         }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            UserViewModel userViewModel = new UserViewModel();
-            userViewModel.AddUser(txtFirstName.Text, txtLastName.Text);
-            
+           // UserViewModel userViewModel = new UserViewModel();
+           var newList= userViewModel.AddUser(txtFirstName.Text, txtLastName.Text);
+            cbUsers.ItemsSource = null;
+            cbUsers.ItemsSource = newList;
+
+
         }
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             UserViewModel userViewModel = new UserViewModel();
-            userViewModel.RemoveUser(txtFirstName.Text, txtLastName.Text);
+            var newList=userViewModel.RemoveUser(txtFirstName.Text, txtLastName.Text);
+            cbUsers.ItemsSource = null;
+            cbUsers.ItemsSource = newList;
         }
      
         private void btnRefresh_Click(object sender, RoutedEventArgs e)

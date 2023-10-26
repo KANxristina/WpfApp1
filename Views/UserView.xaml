@@ -8,13 +8,13 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <ComboBox Name="cbUsers"
-          ItemsSource="{Binding UserList,UpdateSourceTrigger=PropertyChanged}"
+          ItemsSource="{Binding  UserList, UpdateSourceTrigger=PropertyChanged}"
           DisplayMemberPath="FirstName"
           SelectedValuePath="LastName"
-          HorizontalAlignment="Left" Margin="162,65,0,0" VerticalAlignment="Top" Width="120"/>
+          HorizontalAlignment="Left" Margin="162,65,0,0" VerticalAlignment="Top" Width="120" IsEditable="False" SelectedItem="{Binding FirstName  , Mode=TwoWay}" />
         <Button Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="123,288,0,0" VerticalAlignment="Top" Click="btnAdd_Click"/>
         <Button Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Margin="509,298,0,0" VerticalAlignment="Top" Click="btnRemove_Click"/>
-        <TextBox Name="txtFirstName" HorizontalAlignment="Left" Margin="123,334,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="146"/>
+        <TextBox Text="{Binding Path=SelectedValue, ElementName=cbUsers}" Name="txtFirstName" HorizontalAlignment="Left" Margin="123,334,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="146"/>
         <Label Content="FirstName" HorizontalAlignment="Left" Margin="42,325,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.25,-0.093"/>
         <TextBox Name="txtLastName"  HorizontalAlignment="Left" Margin="123,393,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="146"/>
         <Label Content="LastName" HorizontalAlignment="Left" Margin="42,380,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.25,-0.093"/>
