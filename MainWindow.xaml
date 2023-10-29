@@ -8,6 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <views:UserView x:Name="FirstViewControl" Loaded="FirstViewControl_Loaded"></views:UserView>
+        <views:FirstView x:Name = "FirstViewControl" Loaded = "FirstViewControl_Loaded" ></views:FirstView >
     </Grid>
 </Window>

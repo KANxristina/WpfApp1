@@ -27,14 +27,10 @@ namespace WpfApp1
         }
         private void FirstViewControl_Loaded(object sender, RoutedEventArgs e)
         {
-         //   < views:FirstView x:Name = "FirstViewControl" Loaded = "FirstViewControl_Loaded" ></ views:FirstView >
-                   //FirstViewModel firstViewModel = new FirstViewModel();
-                   // firstViewModel.FindColor();
-                   // FirstViewControl.DataContext = firstViewModel.FirstModel;
+            FirstViewModel firstViewModel = new FirstViewModel();
+            firstViewModel.FindColor();
+            FirstViewControl.DataContext = firstViewModel.FirstModel;
 
-             UserViewModel userViewModel = new UserViewModel();
-            userViewModel.InitializeList();
-            FirstViewControl.DataContext = userViewModel;
         }
     }
 }
